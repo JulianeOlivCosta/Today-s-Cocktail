@@ -1,5 +1,6 @@
 package com.wcc.todayscocktail.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.wcc.todayscocktail.network.Cocktail
@@ -30,6 +31,7 @@ class CocktailsListRepository() {
                 cocktailListResponse.postValue(listResult)
 
             } catch (e: Exception) {
+                Log.i("service error", "${e.message}")
                 withContext(Dispatchers.Main) {
                     cocktailListResponse.postValue(listOf())
                 }
